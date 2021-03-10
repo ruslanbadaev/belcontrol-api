@@ -130,7 +130,6 @@ exports.updateItem = async (req, res) => {
        path: element.path,
        size: element.size
      })
-     console.log(element);
    }); 
     req = matchedData(req)
     const id = await utils.isIDGood(req.id)
@@ -142,16 +141,6 @@ exports.updateItem = async (req, res) => {
   }
 }
 
-/* 
-const express = require("express");
-const multer = require("multer");
-
-const app = express(); */
-
-
-
-
-
 /**
  * Create item function called by route
  * @param {Object} req - request object
@@ -159,21 +148,6 @@ const app = express(); */
  */
 exports.createItem = async (req, res) => {
   try {
-    //console.log(req);
-    console.log(req.body);
-    console.log(req.files);
-    console.log(req.file);
-    console.log('this ---------------- ');
-/*     let storageConfig = multer.diskStorage({
-      destination: (req, file, cb) => {
-        cb(null, "uploads");
-      },
-      filename: (req, file, cb) => {
-        cb(null, file.originalname);
-      }
-    });
-    app.use(express.static(__dirname));
-    app.use(multer({ storage: storageConfig }).any()); */
     let files = [];
      req.files.forEach(element => {
       files.push({
@@ -181,7 +155,6 @@ exports.createItem = async (req, res) => {
         path: element.path,
         size: element.size
       })
-      console.log(element);
     }); 
     req = matchedData(req)
     req.files = files

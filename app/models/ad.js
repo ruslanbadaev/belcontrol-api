@@ -15,6 +15,14 @@ const AdSchema = new mongoose.Schema(
       type: String,
       required: true
     },
+    vote: {
+      title: {
+        type: String
+      },
+      options: {
+        type: Array
+      }
+    },
     files: {
       type: Array,
       required: true

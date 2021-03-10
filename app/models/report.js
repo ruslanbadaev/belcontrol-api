@@ -15,6 +15,14 @@ const ReportSchema = new mongoose.Schema(
       type: String,
       required: true
     },
+    latitude: {
+      type: Number,
+      required: true
+    },
+    longitude: {
+      type: Number,
+      required: true
+    },
     files: {
       type: Array,
       required: true

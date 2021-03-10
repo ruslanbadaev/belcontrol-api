@@ -130,7 +130,6 @@ exports.updateItem = async (req, res) => {
        path: element.path,
        size: element.size
      })
-     console.log(element);
    }); 
     req = matchedData(req)
     const id = await utils.isIDGood(req.id)
@@ -142,15 +141,22 @@ exports.updateItem = async (req, res) => {
   }
 }
 
-/* 
-const express = require("express");
-const multer = require("multer");
+/**
+ * Update item function called by route
+ * @param {Object} req - request object
+ * @param {Object} res - response object
+ */
+exports.incrementVote = async (req, res) => {
+  try {
 
-const app = express(); */
-
-
-
-
+    req = matchedData(req)
+    const id = await utils.isIDGood(req.id)
+    res.status(200).json(await db.updateItem(id, model, {$set: {}}))
+    
+  } catch (error) {
+    utils.handleError(res, error)
+  }
+}
 
 /**
  * Create item function called by route
@@ -164,16 +170,6 @@ exports.createItem = async (req, res) => {
     console.log(req.files);
     console.log(req.file);
     console.log('this ---------------- ');
-/*     let storageConfig = multer.diskStorage({
-      destination: (req, file, cb) => {
-        cb(null, "uploads");
-      },
-      filename: (req, file, cb) => {
-        cb(null, file.originalname);
-      }
-    });
-    app.use(express.static(__dirname));
-    app.use(multer({ storage: storageConfig }).any()); */
     let files = [];
      req.files.forEach(element => {
       files.push({
@@ -181,7 +177,6 @@ exports.createItem = async (req, res) => {
         path: element.path,
         size: element.size
       })
-      console.log(element);
     }); 
     req = matchedData(req)
     req.files = files
