@@ -131,7 +131,8 @@ exports.updateItem = async (req, res) => {
        size: element.size
      })
    }); 
-    req = matchedData(req)
+    //req = matchedData(req)
+    req = req.body
     const id = await utils.isIDGood(req.id)
     req.files = files
     res.status(200).json(await db.updateItem(id, model, req))
@@ -149,6 +150,7 @@ exports.updateItem = async (req, res) => {
 exports.createItem = async (req, res) => {
   try {
     let files = [];
+    console.log(req.body)
      req.files.forEach(element => {
       files.push({
         filename: element.filename,
@@ -156,7 +158,8 @@ exports.createItem = async (req, res) => {
         size: element.size
       })
     }); 
-    req = matchedData(req)
+    //req = matchedData(req)
+    req = req.body
     req.files = files
     res.status(201).json(await db.createItem(req, model))
   } catch (error) {
