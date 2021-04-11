@@ -1,11 +1,12 @@
 {
-  "name": "node-express-mongodb-jwt-rest-api-skeleton",
-  "version": "6.1.17",
-  "description": "Node.js express.js MongoDB JWT REST API - This is a basic API REST skeleton written on JavaScript using async/await. Great for building a starter web API for your front-end (Android, iOS, Vue, react, angular, or anything that can consume an API)",
+  "name": "urban-control",
+  "version": "1.0.0",
+  "description": "API for my town app",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/davellanedam/node-express-mongodb-jwt-rest-api-skeleton.git"
+    "url": "https://github.com/ruslanbadaev/belcontrol-api.git"
+
   },
   "scripts": {
     "start": "NODE_ENV=production pm2 start server.js",
