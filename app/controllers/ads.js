@@ -123,19 +123,18 @@ exports.getItem = async (req, res) => {
  */
 exports.updateItem = async (req, res) => {
   try {
-    let files = [];
+    const files = []
     req.files.forEach(element => {
-     files.push({
-       filename: element.filename,
-       path: element.path,
-       size: element.size
-     })
-   }); 
+      files.push({
+        filename: element.filename,
+        path: element.path,
+        size: element.size
+      })
+    })
     req = matchedData(req)
     const id = await utils.isIDGood(req.id)
     req.files = files
     res.status(200).json(await db.updateItem(id, model, req))
-    
   } catch (error) {
     utils.handleError(res, error)
   }
@@ -148,11 +147,9 @@ exports.updateItem = async (req, res) => {
  */
 exports.incrementVote = async (req, res) => {
   try {
-
     req = matchedData(req)
     const id = await utils.isIDGood(req.id)
-    res.status(200).json(await db.updateItem(id, model, {$set: {}}))
-    
+    res.status(200).json(await db.updateItem(id, model, { $set: {} }))
   } catch (error) {
     utils.handleError(res, error)
   }
@@ -165,19 +162,19 @@ exports.incrementVote = async (req, res) => {
  */
 exports.createItem = async (req, res) => {
   try {
-    //console.log(req);
-    console.log(req.body);
-    console.log(req.files);
-    console.log(req.file);
-    console.log('this ---------------- ');
-    let files = [];
-     req.files.forEach(element => {
+    // console.log(req);
+    console.log(req.body)
+    console.log(req.files)
+    console.log(req.file)
+    console.log('this ---------------- ')
+    const files = []
+    req.files.forEach(element => {
       files.push({
         filename: element.filename,
         path: element.path,
         size: element.size
       })
-    }); 
+    })
     req = matchedData(req)
     req.files = files
     res.status(201).json(await db.createItem(req, model))

@@ -4,19 +4,15 @@ const AuthController = require('../controllers/auth')
 const express = require('express')
 const router = express.Router()
 require('../../config/passport')
-//const server = require('../../server')
+// const server = require('../../server')
 const passport = require('passport')
 const requireAuth = passport.authenticate('jwt', {
   session: false
 })
-//const multer  = require('multer')
-//const upload = multer({ dest: 'uploads/' })
+// const multer  = require('multer')
+// const upload = multer({ dest: 'uploads/' })
 
 const trimRequest = require('trim-request')
-
- 
-
-
 
 /*
  * Cities routes
@@ -43,11 +39,11 @@ router.get(
  */
 router.post(
   '/',
-  //requireAuth,
-  //AuthController.roleAuthorization(['user', 'admin']),
-  //trimRequest.all,
-  //server.uploadFile,
-  //validate.createItem,
+  // requireAuth,
+  // AuthController.roleAuthorization(['user', 'admin']),
+  // trimRequest.all,
+  // server.uploadFile,
+  // validate.createItem,
   controller.createItem
 )
 

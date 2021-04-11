@@ -123,20 +123,19 @@ exports.getItem = async (req, res) => {
  */
 exports.updateItem = async (req, res) => {
   try {
-    let files = [];
+    const files = []
     req.files.forEach(element => {
-     files.push({
-       filename: element.filename,
-       path: element.path,
-       size: element.size
-     })
-   }); 
-    //req = matchedData(req)
+      files.push({
+        filename: element.filename,
+        path: element.path,
+        size: element.size
+      })
+    })
+    // req = matchedData(req)
     req = req.body
     const id = await utils.isIDGood(req.id)
     req.files = files
     res.status(200).json(await db.updateItem(id, model, req))
-    
   } catch (error) {
     utils.handleError(res, error)
   }
@@ -149,16 +148,16 @@ exports.updateItem = async (req, res) => {
  */
 exports.createItem = async (req, res) => {
   try {
-    let files = [];
+    const files = []
     console.log(req.body)
-     req.files.forEach(element => {
+    req.files.forEach(element => {
       files.push({
         filename: element.filename,
         path: element.path,
         size: element.size
       })
-    }); 
-    //req = matchedData(req)
+    })
+    // req = matchedData(req)
     req = req.body
     req.files = files
     res.status(201).json(await db.createItem(req, model))

@@ -17,7 +17,7 @@ exports.createItem = [
     .not()
     .isEmpty()
     .withMessage('IS_EMPTY'),
-    check('creator')
+  check('creator')
     .exists()
     .withMessage('MISSING')
     .not()

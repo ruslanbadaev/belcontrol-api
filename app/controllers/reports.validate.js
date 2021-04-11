@@ -16,7 +16,8 @@ exports.createItem = [
     .withMessage('MISSING')
     .not()
     .isEmpty()
-    .withMessage('IS_EMPTY').trim(),
+    .withMessage('IS_EMPTY')
+    .trim(),
   check('creator')
     .exists()
     .withMessage('MISSING')

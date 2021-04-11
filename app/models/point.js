@@ -24,7 +24,7 @@ const PointSchema = new mongoose.Schema(
         type: Number,
         required: true
       }
-    },
+    }
   },
   {
     versionKey: false,

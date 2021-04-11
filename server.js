@@ -1,4 +1,3 @@
-
 require('dotenv-safe').config()
 const express = require('express')
 const bodyParser = require('body-parser')
@@ -6,7 +5,7 @@ const morgan = require('morgan')
 const compression = require('compression')
 const helmet = require('helmet')
 const cors = require('cors')
-var multer  = require('multer');
+const multer = require('multer')
 const passport = require('passport')
 const app = express()
 const i18n = require('i18n')
@@ -35,35 +34,16 @@ if (process.env.USE_REDIS === 'true') {
   app.use(cache)
 }
 
-
-
-
-
-
-
-
-let storageConfig = multer.diskStorage({
+const storageConfig = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads");
+    cb(null, 'uploads')
   },
   filename: (req, file, cb) => {
-    cb(null, file.originalname);
+    cb(null, file.originalname)
   }
-});
-app.use(express.static(__dirname));
-app.use(multer({ storage: storageConfig }).any());
-
-
-
-
-
-
-
-
-
-
-
-
+})
+app.use(express.static(__dirname))
+app.use(multer({ storage: storageConfig }).any())
 
 // for parsing json
 app.use(
@@ -89,7 +69,7 @@ i18n.configure({
 app.use(i18n.init)
 
 // Init all other stuff
-//app.use(cors())
+// app.use(cors())
 app.use(passport.initialize())
 app.use(compression())
 app.use(helmet())
