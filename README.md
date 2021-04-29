@@ -13,6 +13,9 @@ run dev mode
 npm run dev
 ```
 
-
+config env file or copy data from env.example
+```
+nano .env
+```
 
 
